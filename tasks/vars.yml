@@ -1,0 +1,8 @@
+---
+- name: set the short hostname
+  set_fact:
+    hostname__short: "{% if '.' in hostname %}{{ hostname.split('.')[0] }}{% else %}{{ hostname }}{% endif %}"
+
+- name: set the domain name
+  set_fact:
+    hostname__domain: "{% if '.' in hostname %}{{ hostname.split('.')[
