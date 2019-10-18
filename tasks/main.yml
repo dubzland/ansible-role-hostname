@@ -1,5 +1,7 @@
 ---
 - import_tasks: vars.yml
+  tags:
+    - hostname
 
 - name: set the hostname
   hostname:
