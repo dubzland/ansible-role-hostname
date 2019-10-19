@@ -1,4 +1,4 @@
-Ansible Role: Hostname
+Dubzland: Hostname
 =========
 
 Updates the hostname (permanently) on a node.
