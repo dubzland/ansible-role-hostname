@@ -5,7 +5,7 @@ Updates the hostname (permanently) on a node.
 
 ## Requirements
 
-Ansible version 2.0 or higher.
+Ansible version 2.9 or higher (for proper `hostname` module functionality).
 
 ## Role Variables
 

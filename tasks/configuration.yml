@@ -2,7 +2,9 @@
 - name: set the hostname
   hostname:
     name: "{{ dubzland_hostname__short }}"
-  when: ansible_hostname != dubzland_hostname__short
+  when:
+    - ansible_hostname != dubzland_hostname__short
+    - ansible_env['container'] != 'docker'
   tags:
     - hostname
 
@@ -13,7 +15,8 @@
     owner: root
     group: root
     mode: 0644
-    unsafe_writes: yes
+  when:
+    - ansible_env['container'] != 'docker'
   tags:
     - hostname
 
