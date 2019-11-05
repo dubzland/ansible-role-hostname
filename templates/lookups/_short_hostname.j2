@@ -1,0 +1,5 @@
+{% set _dubzland_hostname__short = dubzland_hostname_fqdn %}
+{% if '.' in dubzland_hostname_fqdn %}
+{%   set dubzland_hostname__short = dubzland_hostname_fqdn.split('.') | first %}
+{% endif %}
+{{ _dubzland_hostname__short | to_yaml }}

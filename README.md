@@ -1,41 +1,53 @@
-Dubzland: Hostname
-=========
+# Dubzland: Hostname
+[![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/jdubz/dubzland-hostname?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/jdubz/dubzland-hostname/pipelines)
 
 Updates the hostname (permanently) on a node.
 
-Requirements
-------------
+## Requirements
 
-Requires Ansible 1.4 or higher.
+Ansible version 2.0 or higher.
 
-Developed and tested on Debian 9.  Should work on any modern Debian or Debian
-derivative.
+## Role Variables
 
-Role Variables
---------------
+Available variables are listed below, along with their default values (see
+    `defaults/main.yml` for more info):
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### dubzland_hostname_fqdn
 
-Dependencies
-------------
+```yaml
+dubzland_hostanme_fqdn: "{{ inventory_hostname }}"
+```
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Full hostname + domain (FQDN).
 
-Example Playbook
-----------------
+### dubzland_hostname_ip
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```yaml
+dubzland_hostname_ip: ""
+```
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+IP address to associate with this host in `/etc/hosts` (leave blank to avoid
+writing to the hosts file.
 
-License
--------
+## Dependencies
 
-BSD
+None.
 
-Author Information
-------------------
+## Example Playbook
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+```yaml
+
+- hosts: all
+  roles:
+    - role: dubzland-hostname
+      vars:
+        dubzland_hostname_fqdn: "host1.example.com"
+```
+
+## License
+
+MIT
+
+## Author
+
+* [Josh Williams](https://codingprime.com)

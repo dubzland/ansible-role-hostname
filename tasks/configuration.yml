@@ -1,0 +1,47 @@
+---
+- name: set the hostname
+  hostname:
+    name: "{{ dubzland_hostname__short }}"
+  when: ansible_hostname != dubzland_hostname__short
+  tags:
+    - hostname
+
+- name: make the hostname permanent
+  copy:
+    content: "{{ dubzland_hostname__fqdn }}"
+    dest: /etc/hostname
+    owner: root
+    group: root
+    mode: 0644
+    unsafe_writes: yes
+  tags:
+    - hostname
+
+- name: remove any extra loopback interface
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '^127\.0\.1\.1'
+    state: absent
+  tags:
+    - hostname
+
+- name: ensure the localhost entry is configured properly
+  lineinfile:
+    dest: /etc/hosts
+    regexp: '^127\.0\.0\.1'
+    line: 127.0.0.1 localhost
+    state: present
+    unsafe_writes: yes
+  tags:
+    - hostname
+
+- name: ensure hosts entry for primary ip
+  lineinfile:
+    dest: /etc/hosts
+    regexp: "^{{ dubzland_hostname_ip }}"
+    line: "{{ dubzland_hostname_ip }}{% if dubzland_hostname__fqdn %}\t{{ dubzland_hostname__fqdn }}{% endif %}\t{{ dubzland_hostname__short }}"
+    state: present
+    unsafe_writes: yes
+  when: dubzland_hostname_ip | length > 0
+  tags:
+    - hostname

@@ -1,3 +1,3 @@
 ---
-hostname_fqdn: "{{ inventory_hostname }}"
-hostname_ip: "{{ hostname_default_ip }}"
+dubzland_hostname_fqdn: "{{ inventory_hostname }}"
+dubzland_hostname_ip: ""

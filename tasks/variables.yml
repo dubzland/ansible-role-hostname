@@ -1,0 +1,30 @@
+---
+- name: set os-specific variables
+  include_vars: "{{ lookup('first_found', params) }}"
+  vars:
+    params:
+      files:
+        - "{{ ansible_os_family }}-{{ ansible_distribution }}.yml"
+        - "{{ ansible_os_family }}.yml"
+        - "default.yml"
+      paths:
+        - 'vars'
+
+- name: check for required variables
+  fail:
+    msg: "Variable '{{ item }}' is required, but undefined"
+  when: item not in vars
+  with_items:
+    - dubzland_hostname_fqdn
+
+- name: set the short hostname
+  set_fact:
+    dubzland_hostname__short: '{{ lookup("template", "lookups/_short_hostname.j2", convert_data=False) | from_yaml }}'
+
+- name: set the domain name
+  set_fact:
+    dubzland_hostname__domain: '{{ lookup("template", "lookups/_domain_name.j2", convert_data=False) | from_yaml }}'
+
+- name: set the fqdn
+  set_fact:
+    dubzland_hostname__fqdn: '{{ lookup("template", "lookups/_fqdn.j2", convert_data=False) | from_yaml }}'
