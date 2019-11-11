@@ -14,7 +14,7 @@ platforms:
       - /run/lock
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    pre_build_image: true
+    pre_build_image: True
   - name: dubzland-hostname-debian10
     image: jdubz/docker-ansible-debian10:latest
     override_command: False
@@ -24,10 +24,9 @@ platforms:
       - /tmp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    pre_build_image: true
+    pre_build_image: True
 provisioner:
   name: ansible
-  log: true
   lint:
     name: ansible-lint
   playbooks:
