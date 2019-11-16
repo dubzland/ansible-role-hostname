@@ -4,7 +4,7 @@
     name: "{{ dubzland_hostname__short }}"
   when:
     - ansible_hostname != dubzland_hostname__short
-    - ansible_env['container'] != 'docker'
+    - (ansible_env.container | default('')) != 'docker'
   tags:
     - hostname
 
@@ -16,7 +16,7 @@
     group: root
     mode: 0644
   when:
-    - ansible_env['container'] != 'docker'
+    - (ansible_env.container | default('')) != 'docker'
   tags:
     - hostname
 
