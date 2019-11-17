@@ -1,6 +1,5 @@
 {% set _dubzland_hostname__fqdn = dubzland_hostname__short %}
 {% if '.' in dubzland_hostname_fqdn %}
-{%   set dubzland_hostname__fqdn = dubzland_hostname__short + "." +
-  dubzland_hostname__domain %}
+{%   set _dubzland_hostname__fqdn = dubzland_hostname__short + "." + dubzland_hostname__domain %}
 {% endif %}
 {{ _dubzland_hostname__fqdn | to_yaml }}

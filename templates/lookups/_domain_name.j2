@@ -1,5 +1,5 @@
 {% set _dubzland_hostname__domain = "" %}
 {% if '.' in dubzland_hostname_fqdn %}
-{%   set dubzland_hostname__domain = dubzland_hostname_fqdn.split('.', 1) | last %}
+{%   set _dubzland_hostname__domain = dubzland_hostname_fqdn.split('.', 1) | last %}
 {% endif %}
 {{ _dubzland_hostname__domain | to_yaml }}
