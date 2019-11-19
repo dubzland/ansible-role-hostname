@@ -1,5 +1,5 @@
-# Dubzland: Hostname
-[![Gitlab pipeline status (self-hosted)](https://img.shields.io/gitlab/pipeline/jdubz/dubzland-hostname?gitlab_url=https%3A%2F%2Fgit.dubzland.net)](https://git.dubzland.net/jdubz/dubzland-hostname/pipelines)
+# Ansible Role: Hostname
+[![Gitlab pipeline status (self-hosted)](https://git.dubzland.net/dubzland/ansible-role-hostname/badges/master/pipeline.svg)](https://git.dubzland.net/dubzland/ansible-role-hostname)
 
 Updates the hostname (permanently) on a node.
 
@@ -15,7 +15,7 @@ Available variables are listed below, along with their default values (see
 ### dubzland_hostname_fqdn
 
 ```yaml
-dubzland_hostanme_fqdn: "{{ inventory_hostname }}"
+dubzland_hostname_fqdn: "{{ inventory_hostname }}"
 ```
 
 Full hostname + domain (FQDN).
