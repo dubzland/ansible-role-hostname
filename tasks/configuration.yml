@@ -10,7 +10,7 @@
 
 - name: make the hostname permanent
   copy:
-    content: "{{ dubzland_hostname__fqdn }}"
+    content: "{{ dubzland_hostname__short }}"
     dest: /etc/hostname
     owner: root
     group: root
